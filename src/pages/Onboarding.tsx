@@ -1,8 +1,11 @@
-import { Button, ButtonGroup, Steps } from "@chakra-ui/react"
+import { Button, ButtonGroup, Steps, Input } from "@chakra-ui/react"
+import { NativeSelect } from "@chakra-ui/react"
+import * as React from "react";
 
 const Onboarding = () => {
   return (
-    <Steps.Root defaultStep={1} count={steps.length}>
+
+    <Steps.Root defaultStep={0} count={steps.length}>
       <Steps.List>
         {steps.map((step, index) => (
           <Steps.Item key={index} index={index} title={step.title}>
@@ -14,11 +17,41 @@ const Onboarding = () => {
       </Steps.List>
 
       {steps.map((step, index) => (
-        <Steps.Content key={index} index={index}>
+      <React.Fragment key={index}>
+      { index === 0 && (
+        <Steps.Content index={index}>
           {step.description}
+            <Input placeholder = "Wallet Address"/>
         </Steps.Content>
+      )}
+      { index === 1 && (
+        <Steps.Content index={index}>
+          {step.description}
+<NativeSelect.Root>
+  <NativeSelect.Field>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </NativeSelect.Field>
+  <NativeSelect.Indicator />
+</NativeSelect.Root>
+        </Steps.Content>
+              )}
+        { index === 2 && (      
+        <Steps.Content index={index}>
+          {step.description}
+<NativeSelect.Root>
+  <NativeSelect.Field>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </NativeSelect.Field>
+  <NativeSelect.Indicator />
+</NativeSelect.Root>
+        </Steps.Content>
+        )}
+        </React.Fragment>
       ))}
       <Steps.CompletedContent>All steps are complete!</Steps.CompletedContent>
+<Button size="sm" variant="outline" color="white" bg="black">Submit</Button>
 
       <ButtonGroup size="sm" variant="outline">
         <Steps.PrevTrigger asChild>
@@ -34,16 +67,16 @@ const Onboarding = () => {
 
 const steps = [
   {
-    title: "Step 1",
-    description: "Step 1 description",
+    title: "Wallet address",
+    description: "Enter your wallet address",
   },
   {
-    title: "Step 2",
-    description: "Step 2 description",
+    title: "Select chain",
+    description: "Select the chain where you will receive tokens",
   },
   {
-    title: "Step 3",
-    description: "Step 3 description",
+    title: "Select token",
+    description: "Select token in which you will recieve payment",
   },
 ]
 
