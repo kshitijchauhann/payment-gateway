@@ -1,12 +1,38 @@
-import { Table, Card, Flex } from "@chakra-ui/react"
+"use client"
+
+import { Table, Card, Flex, Box } from "@chakra-ui/react"
+import { Button, CloseButton, Drawer, Portal } from "@chakra-ui/react"
+import { useState } from "react"
+
+
 const Dashboard = () => {
   return (
-    <Flex>
-    <Summary/>
-    <TransactionTable/>
+    <Flex  minH="100vh" w="100vw" bg="gray.50">
+    
+
+      {/* Main Content */}
+      <Box  w="100%" p={8}>
+        {/* Header */}
+        <Box mb={6}>
+          <Box fontSize="2xl" fontWeight="bold">Transactions Dashboard</Box>
+          <Box color="gray.600">Monitor your incoming payments and subscriber activity</Box>
+        </Box>
+
+        {/* Summary Cards */}
+        <Box mb={8}>
+          <Summary />
+        </Box>
+
+        {/* Transaction Table */}
+        <Box>
+          <Box fontWeight="semibold" fontSize="lg" mb={4}>Recent Transactions</Box>
+          <TransactionTable />
+        </Box>
+      </Box>
     </Flex>
-  )
-}
+  );
+};
+
 
 const Summary = () => {
 

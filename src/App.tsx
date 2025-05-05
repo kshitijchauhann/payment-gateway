@@ -2,6 +2,7 @@ import Login from "./pages/Login.tsx";
 import SignUp from "./pages/SignUp.tsx";
 import Onboarding from "./pages/Onboarding.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
+import Profile from "./pages/UserProfile.tsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
@@ -13,6 +14,8 @@ const App = () => {
         <Route path="/register" element={<SignUp/>}/>
         <Route path="/onboarding" element={<Onboarding/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/profile" element={<Profile/>}/>
+
       </Routes>
     </BrowserRouter>
   )
